@@ -3,7 +3,7 @@ import css from './Form.module.css';
 import { nanoid } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactSlice';
+import { addContact } from 'servise/serviseApi';
 
 const getContacts = state => state.contacts.contacts;
 
