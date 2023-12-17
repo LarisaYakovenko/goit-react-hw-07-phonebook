@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import css from './Form.module.css';
-import { nanoid } from '@reduxjs/toolkit';
+
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from '../../servise/serviseApi';
 
-const getContacts = state => state.contacts.contacts;
+const getContacts = state => state.contacts.items;
 
 export const Form = () => {
   const contacts = useSelector(getContacts);
@@ -18,13 +18,10 @@ export const Form = () => {
     setNumber('');
   };
 
-  const generetedId = () => {
-    return nanoid(5);
-  };
   const handleSubmit = e => {
     e.preventDefault();
     const isAdded = contacts.find(
-      el => el.name.toLowerCase() === contacts.name.toLowerCase()
+      el => el.name.toLowerCase() === name.toLowerCase()
     );
 
     if (isAdded) {
@@ -36,7 +33,7 @@ export const Form = () => {
       });
       return;
     }
-    dispatch(addContact({ id: generetedId(), name: name, number: number }));
+    dispatch(addContact({ name, number }));
 
     resetForm();
   };
