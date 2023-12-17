@@ -24,7 +24,7 @@ export const Form = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const isAdded = contacts.find(
-      el => el.name.toLowerCase() === name.toLowerCase()
+      el => el.name.toLowerCase() === contacts.name.toLowerCase()
     );
 
     if (isAdded) {
